@@ -1,0 +1,24 @@
+{
+  "name": "pa-tutorial-getting-started-00",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "bpmn-visualization": "0.26.2"
+  },
+  "alias": {
+    "bpmn-visualization": "bpmn-visualization/dist/bpmn-visualization.esm.js"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "1.12.5"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  },
+  "keywords": []
+}
