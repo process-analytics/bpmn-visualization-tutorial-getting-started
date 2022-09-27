@@ -1,4 +1,4 @@
-A geutting started demo that uses bpmn-visualization library to visualize runtime monitoring data.
+A getting started demo that uses bpmn-visualization library to visualize runtime monitoring data.
 
 The following visualization is used:
 
