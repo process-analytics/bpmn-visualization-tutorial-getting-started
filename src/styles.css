@@ -1,192 +1,97 @@
 body {
-  font-family: sans-serif;
-}
-footer {
-  float: right;
-  margin-right: 2rem;
-  margin-top: 1.5rem;
-  font-style: italic;
-}
-
-#bpmn-container {
-  /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
-  /* width is relative to the window size */
-  height: 80vh;
-  border-style: solid;
-  border-color: #b0b0b0;
-  border-width: 1px;
-  /* This ensures that the parts of the diagram outside of the container are not displayed. */
-  overflow: hidden;
-  background-color: white;
-}
-
-.bpmn-type-event > ellipse,
-.bpmn-type-activity > rect,
-.bpmn-type-gateway > path:nth-child(1),
-.bpmn-type-flow > path:nth-child(2) {
-  stroke: gray;
-}
-
-.bpmn-type-flow > path:nth-child(3),
-.bpmn-type-gateway > path:nth-child(2) {
-  stroke: gray;
-  fill: gray;
-}
-
-:root {
-  --freq-lvl1: #909090;
-  --freq-lvl2: #787878;
-  --freq-lvl3: #686868;
-  --freq-lvl4: #585858;
-  --freq-lvl5: #484848;
-
-  --violation-lvl0: green; /*efficient*/
-  --violation-lvl1: orange; /*risky*/
-  --violation-lvl2: red; /*critical*/
-}
-
-/* css of running tasks */
-.task-running-on-time > rect {
-  animation: pulse-animation-on-time 0.8s infinite alternate;
-}
-
-@keyframes pulse-animation-on-time {
-  0% {
-    filter: drop-shadow(0 0 0 rgba(97, 226, 97, 0.849));
+    font-family: sans-serif;
   }
-  100% {
-    filter: drop-shadow(0 0 0.75em rgba(97, 226, 97, 0.849));
+  footer {
+    float: right;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+    font-style: italic;
   }
-}
-
-.task-running-risky > rect {
-  animation: pulse-animation-risky 0.8s infinite alternate;
-}
-
-@keyframes pulse-animation-risky {
-  0% {
-    filter: drop-shadow(0 0 0 rgb(202, 117, 5));
+  
+  #bpmn-container {
+    /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
+    /* width is relative to the window size */
+    height: 80vh;
+    border-style: solid;
+    border-color: #b0b0b0;
+    border-width: 1px;
+    /* This ensures that the parts of the diagram outside of the container are not displayed. */
+    overflow: hidden;
+    background-color: white;
   }
-  100% {
-    filter: drop-shadow(0 0 0.75em rgb(202, 117, 5));
+
+  .bpmn-type-event > ellipse,
+  .bpmn-type-activity > rect,
+  .bpmn-type-gateway > path:nth-child(1) {
+    fill: rgb(230, 225, 225);
   }
-}
+  
 
-.task-running-critical > rect {
-  animation: pulse-animation-critical 0.8s infinite alternate;
-}
+  /*css of running instances */
+  .task-running-on-time > rect {
+    stroke-dasharray: 10, 5;
+    animation-name: dash-task;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    filter: drop-shadow(0 0 0.95em rgb(6, 146, 3));
 
-@keyframes pulse-animation-critical {
-  0% {
-    filter: drop-shadow(0 0 0 rgb(177, 4, 4));
   }
-  100% {
-    filter: drop-shadow(0 0 0.75em rgb(177, 4, 4));
+
+  .task-running-risky > rect {
+    stroke-dasharray: 10, 5;
+    animation-name: dash-task;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    filter: drop-shadow(0 0 0.95em rgb(255, 119, 0));
+    }
+
+  .task-running-critical > rect {
+    stroke-dasharray: 10, 5;
+    animation-name: dash-task;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    filter: drop-shadow(0 0 0.95em rgb(255, 0, 0));
+    
+    }
+  
+  @keyframes dash-task {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: 100;
+    }
   }
-}
+  
 
-/* CSS of waiting process instances */
+  /* CSS of waiting process instances */
 
-/* Need to apply the animation to the SVG element corresponding to the line of the edge.
-Here, it's the second child, and looks like
-   "<path d="..." fill="none" stroke="black" stroke-width="1.78" stroke-miterlimit="10" pointer-events="stroke"></path>"
-in the DOM */
-.running-dashed > path:nth-child(2) {
-  stroke-dasharray: 4, 2, 1, 2;
-  animation-name: dash;
-  animation-duration: 1000ms;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: reverse;
-}
-
-@keyframes dash {
-  from {
-    stroke-dashoffset: 0;
+  .path-waiting > path:nth-child(2) {
+    stroke: #ca0d0d;
+    animation: pulsate 1.5s ease-out;
+    animation-iteration-count: infinite;
+    
   }
-  to {
-    stroke-dashoffset: 10;
+
+  .path-waiting > path:nth-child(3) {
+    fill: #ca0d0d;
+    stroke: #ca0d0d;
+    animation: pulsate 1.5s ease-out;
+    animation-iteration-count: infinite;
   }
-}
+  
+  @keyframes pulsate {
+    0%    { opacity:0.4; stroke-width: 3; }
+    50%   { opacity:1.0; stroke-width: 6; }
+    100%  { opacity:0.4; stroke-width: 3; }
+  }
 
-/* CSS of path, ecitivty and event frequency visit */
 
-/* for 'path-*' classes
-  path:nth-child(2) is for edge line
-  path:nth-child(3) is for edge arrow
-*/
-.path-freq-lvl1 > path:nth-child(2),
-.activity-freq-lvl1 > rect,
-.event-freq-lvl1 > ellipse {
-  stroke-width: 2px;
-}
-
-.path-freq-lvl2 > path:nth-child(2),
-.activity-freq-lvl2 > rect,
-.event-freq-lvl2 > ellipse {
-  stroke-width: 4px;
-}
-
-.path-freq-lvl3 > path:nth-child(2),
-.activity-freq-lvl3 > rect,
-.event-freq-lvl3 > ellipse {
-  stroke-width: 6px;
-}
-
-.path-freq-lvl4 > path:nth-child(2),
-.activity-freq-lvl4 > rect,
-.event-freq-lvl4 > ellipse {
-  stroke-width: 8px;
-}
-
-.path-freq-lvl5 > path:nth-child(2),
-.activity-freq-lvl5 > rect,
-.event-freq-lvl5 > ellipse {
-  stroke-width: 10px;
-}
-
-/* CSS of KPI violations for path, activity and events */
-
-.path-violation-lvl0 > path:nth-child(2) {
-  stroke: var(--violation-lvl0);
-}
-.path-violation-lvl0 > path:nth-child(3) {
-  fill: var(--violation-lvl0);
-  stroke: var(--violation-lvl0);
-}
-
-.path-violation-lvl1 > path:nth-child(2) {
-  stroke: var(--violation-lvl1);
-}
-
-.path-violation-lvl1 > path:nth-child(3) {
-  fill: var(--violation-lvl1);
-  stroke: var(--violation-lvl1);
-}
-
-.path-violation-lvl2 > path:nth-child(2) {
-  stroke: var(--violation-lvl2);
-}
-
-.path-violation-lvl2 > path:nth-child(3) {
-  fill: var(--violation-lvl2);
-  stroke: var(--violation-lvl2);
-}
-
-.activity-violation-lvl0 > rect,
-.event-violation-lvl0 > ellipse {
-  fill: var(--violation-lvl0) !important;
-  fill-opacity: 30% !important;
-}
-
-.activity-violation-lvl1 > rect,
-.event-violation-lvl1 > ellipse {
-  fill: var(--violation-lvl1) !important;
-  fill-opacity: 30% !important;
-}
-
-.activity-violation-lvl2 > rect,
-.event-violation-lvl2 > ellipse {
-  fill: var(--violation-lvl2) !important;
-  fill-opacity: 60% !important;
-}
+  
+  
