@@ -38,7 +38,7 @@ activitiesMonitoringData.forEach((value, key) => {
   if (value[0] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
-      label: value[1].toString(),
+      label: value[0].toString(),
       style: {
         font: { color: "black", size: 16 },
         fill: { color: "#0FFF50", opacity: 50 },
@@ -50,7 +50,7 @@ activitiesMonitoringData.forEach((value, key) => {
   if (value[1] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
-      label: value[2].toString(),
+      label: value[1].toString(),
       style: {
         font: { color: "black", size: 16 },
         fill: { color: "orange", opacity: 50 },
@@ -62,7 +62,7 @@ activitiesMonitoringData.forEach((value, key) => {
   if (value[2] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
-      label: value[3].toString(),
+      label: value[2].toString(),
       style: {
         font: { color: "black", size: 16 },
         fill: { color: "red", opacity: 50 },
@@ -73,13 +73,13 @@ activitiesMonitoringData.forEach((value, key) => {
 });
 
 activitiesMonitoringData.forEach((value, key) => {
-  if (value[3] !== 0){
+  if (value[2] !== 0){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
       }
-  else if (value[2] !== 0){
+  else if (value[1] !== 0){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-risky");
     }
-  else if (value[1] !== 0)
+  else if (value[0] !== 0)
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-on-time");
 });
 
