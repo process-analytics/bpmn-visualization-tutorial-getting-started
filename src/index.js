@@ -28,25 +28,6 @@ bpmnVisualization.load(diagram, {
   }
 });
 
-/*get the bpmn elements ids and store them in a list
-  used later in processing*/
-const activities = bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
-  ShapeUtil.activityKinds()
-);
-
-const activityIds = [];
-for (let i = 0; i < activities.length; i++) {
-  activityIds[i] = activities[i].bpmnSemantic.id;
-}
-
-const gateways = bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
-  ShapeUtil.gatewayKinds()
-);
-const gatewaysIds = [];
-for (let i = 0; i < gateways.length; i++) {
-  gatewaysIds[i] = gateways[i].bpmnSemantic.id;
-}
-
 //add CSS classes to show running instances
 let activitiesMonitoringData = getActivitiesMonitoringData();
 let edgesWaitingInstances = getEdgesWaitingInstances();
