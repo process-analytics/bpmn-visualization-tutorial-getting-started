@@ -40,9 +40,9 @@ activitiesMonitoringData.forEach((value, key) => {
       position: "top-center",
       label: value[0].toString(),
       style: {
-        font: { color: "black", size: 16 },
-        fill: { color: "#0FFF50", opacity: 50 },
-        stroke: { color: "#0FFF50", width: 2 }
+        font: { color: "white", size: 16 },
+        fill: { color: "green", opacity: 50 },
+        stroke: { color: "green", width: 2 }
       }
     });
   }
@@ -52,9 +52,9 @@ activitiesMonitoringData.forEach((value, key) => {
       position: "top-left",
       label: value[1].toString(),
       style: {
-        font: { color: "black", size: 16 },
-        fill: { color: "orange", opacity: 50 },
-        stroke: { color: "orange", width: 2 }
+        font: { color: "white", size: 16 },
+        fill: { color: "#FF8C00", opacity: 50 },
+        stroke: { color: "#FF8C00", width: 2 }
       }
     });
   }
@@ -64,7 +64,7 @@ activitiesMonitoringData.forEach((value, key) => {
       position: "top-right",
       label: value[2].toString(),
       style: {
-        font: { color: "black", size: 16 },
+        font: { color: "white", size: 16 },
         fill: { color: "red", opacity: 50 },
         stroke: { color: "red", width: 2 }
       }
