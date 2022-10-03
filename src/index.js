@@ -47,23 +47,6 @@ for (let i = 0; i < gateways.length; i++) {
   gatewaysIds[i] = gateways[i].bpmnSemantic.id;
 }
 
-//TO FIX
-/*const flows = bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
-  ShapeUtil.flowNodeKinds()
-);
-const flowIds = [];
-for (let i = 0; i < flows.length; i++) {
-  flowIds[i] = flows[i].bpmnSemantic.id;
-}*/
-const flows = bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
-  FlowKind.SEQUENCE_FLOW
-);
-const flowIds = [];
-for (let i = 0; i < flows.length; i++) {
-  flowIds[i] = flows[i].bpmnSemantic.id;
-}
-
-
 //add CSS classes to show running instances
 let activitiesMonitoringData = getActivitiesMonitoringData();
 let edgesWaitingInstances = getEdgesWaitingInstances();
@@ -71,7 +54,7 @@ let edgesWaitingInstances = getEdgesWaitingInstances();
 // Add Overlay on activities
 activitiesMonitoringData.forEach((value, key) => {
   //running on time
-  if (value[1] !== 0) {
+  if (value[0] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
       label: value[1].toString(),
@@ -83,7 +66,7 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   //running late with risky level
-  if (value[2] !== 0) {
+  if (value[1] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
       label: value[2].toString(),
@@ -95,7 +78,7 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   //running late with critical level
-  if (value[3] !== 0) {
+  if (value[2] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
       label: value[3].toString(),
@@ -107,21 +90,6 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
 });
-
-edgesWaitingInstances.forEach((value, key) => {
-  bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
-    {
-      position: "middle",
-      label: value.toString(),
-      style: {
-        font: { color: "black", size: 16 },
-        fill: { color: "red", opacity: 50 },
-        stroke: { color: "red", width: 2 }
-      }
-    }
-  ]);
-});
-
 
 activitiesMonitoringData.forEach((value, key) => {
   if (value[3] !== 0){
@@ -138,17 +106,30 @@ edgesWaitingInstances.forEach((value, key) => {
   bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting");
 });
 
+edgesWaitingInstances.forEach((value, key) => {
+  bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
+    {
+      position: "middle",
+      label: value.toString(),
+      style: {
+        font: { color: "black", size: 16 },
+        fill: { color: "red", opacity: 50 },
+        stroke: { color: "red", width: 2 }
+      }
+    }
+  ]);
+});
 
 /**
  * @param {Map<String, list>} activitiesMonitoringData
  */
 function getActivitiesMonitoringData() {
   let activitiesMonitoringData = new Map();
-  activitiesMonitoringData.set("assignApprover", [700, 5, 0, 0]);
-  activitiesMonitoringData.set("approveInvoice", [650, 2, 3, 0]);
-  activitiesMonitoringData.set("reviewInvoice", [300, 4, 1, 2]);
-  activitiesMonitoringData.set("prepareBankTransfer", [235, 0, 0, 0]);
-  activitiesMonitoringData.set("archiveInvoice", [235, 0, 0, 0]);
+  activitiesMonitoringData.set("assignApprover", [5, 0, 0]);
+  activitiesMonitoringData.set("approveInvoice", [2, 3, 0]);
+  activitiesMonitoringData.set("reviewInvoice", [4, 1, 2]);
+  activitiesMonitoringData.set("prepareBankTransfer", [0, 0, 0]);
+  activitiesMonitoringData.set("archiveInvoice", [0, 0, 0]);
   return activitiesMonitoringData;
 }
 
