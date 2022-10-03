@@ -21,7 +21,7 @@ bpmnVisualization.load(diagram, {
   modelFilter: {
     pools: [
       {
-        // id of the Participant related to the Pool to display
+        // name of the Participant related to the Pool to display
         name: "Process Engine - Invoice Receipt"
       }
     ]
