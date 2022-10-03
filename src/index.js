@@ -1,4 +1,4 @@
-import { BpmnVisualization, ShapeUtil, FlowKind } from "bpmn-visualization";
+import { BpmnVisualization, ShapeUtil, FlowKind, FitType } from "bpmn-visualization";
 
 // BPMN diagram content conveniently retrieved with Vite (as string)
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
@@ -17,7 +17,7 @@ footer.innerText = `bpmn-visualization@${version.lib}`;
 
 // load and filter a pool
 bpmnVisualization.load(diagram, {
-  fit: { type: "Center" },
+  fit: { type: FitType.Center },
   modelFilter: {
     pools: [
       {
