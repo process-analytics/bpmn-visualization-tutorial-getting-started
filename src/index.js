@@ -1,4 +1,4 @@
-import { BpmnVisualization, ShapeUtil, FlowKind, FitType } from "bpmn-visualization";
+import { BpmnVisualization, FitType } from "bpmn-visualization";
 
 // BPMN diagram content conveniently retrieved with Vite (as string)
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
