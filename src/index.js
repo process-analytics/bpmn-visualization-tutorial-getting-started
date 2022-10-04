@@ -35,10 +35,10 @@ let edgesWaitingInstances = getEdgesWaitingInstances();
 // Add Overlay on activities
 activitiesMonitoringData.forEach((value, key) => {
   // running on time
-  if (value[0]) {
+  if (value.onTime) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
-      label: value[0].toString(),
+      label: value.onTime.toString(),
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "green", opacity: 50 },
@@ -47,10 +47,10 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   // running late with risky level
-  if (value[1]) {
+  if (value.risky) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
-      label: value[1].toString(),
+      label: value.risky.toString(),
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "#FF8C00", opacity: 50 },
@@ -59,10 +59,10 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   // running late with critical level
-  if (value[2]) {
+  if (value.critical) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
-      label: value[2].toString(),
+      label: value.critical.toString(),
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "red", opacity: 50 },
@@ -73,32 +73,65 @@ activitiesMonitoringData.forEach((value, key) => {
 });
 
 activitiesMonitoringData.forEach((value, key) => {
-  if (value[2]){
+  if (value.critical){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
       }
-  else if (value[1]){
+  else if (value.risky){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-risky");
     }
-  else if (value[0])
+  else if (value.onTime)
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-on-time");
 });
 
 edgesWaitingInstances.forEach((value, key) => {
-  bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting");
+  if (value.critical){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-critical");
+  } else if (value.risky){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-risky");
+  } else if (value.onTime){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-on-time");
+  }
 });
 
 edgesWaitingInstances.forEach((value, key) => {
-  bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
-    {
-      position: "middle",
-      label: value.toString(),
-      style: {
-        font: { color: "black", size: 16 },
-        fill: { color: "red", opacity: 50 },
-        stroke: { color: "red", width: 2 }
+  if (value.critical) {
+    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
+      {
+        position: "middle",
+        label: value.critical.toString(),
+        style: {
+          font: { color: "black", size: 16 },
+          fill: { color: "red", opacity: 50 },
+          stroke: { color: "red", width: 2 }
+        }
       }
-    }
-  ]);
+    ]);
+  } else if(value.risky){
+    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
+      {
+        position: "middle",
+        label: value.risky.toString(),
+        style: {
+          font: { color: "white", size: 16 },
+          fill: { color: "green", opacity: 50 },
+          stroke: { color: "green", width: 2 }
+        }
+      }
+    ]);
+  }
+  else if(value.onTime){
+    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
+      {
+        position: "middle",
+        label: value.onTime.toString(),
+        style: {
+          font: { color: "black", size: 16 },
+          fill: { color: "#FF8C00", opacity: 50 },
+          stroke: { color: "#FF8C00", width: 2 }
+        }
+      }
+    ]);
+  }
 });
 
 /**
@@ -106,11 +139,11 @@ edgesWaitingInstances.forEach((value, key) => {
  */
 function getActivitiesMonitoringData() {
   let activitiesMonitoringData = new Map();
-  activitiesMonitoringData.set("assignApprover", [5, 0, 0]);
-  activitiesMonitoringData.set("approveInvoice", [2, 3, 0]);
-  activitiesMonitoringData.set("reviewInvoice", [4, 1, 2]);
-  activitiesMonitoringData.set("prepareBankTransfer", [0, 0, 0]);
-  activitiesMonitoringData.set("archiveInvoice", [0, 0, 0]);
+  activitiesMonitoringData.set("assignApprover", {"onTime":5, "risky": 0, "critical": 0});
+  activitiesMonitoringData.set("approveInvoice", {"onTime":2, "risky": 3, "critical": 0});
+  activitiesMonitoringData.set("reviewInvoice", {"onTime":4, "risky": 1, "critical": 2});
+  activitiesMonitoringData.set("prepareBankTransfer", {"onTime":0, "risky": 0, "critical": 0});
+  activitiesMonitoringData.set("archiveInvoice", {"onTime":0, "risky": 0, "critical": 0});
   return activitiesMonitoringData;
 }
 
@@ -119,6 +152,6 @@ function getActivitiesMonitoringData() {
  */
 function getEdgesWaitingInstances() {
   let edgesWaitingInstances = new Map();
-  edgesWaitingInstances.set("invoiceApproved", 2);
+  edgesWaitingInstances.set("invoiceApproved", {"onTime":0, "risky": 0, "critical": 2});
   return edgesWaitingInstances;
 }
