@@ -1,6 +1,6 @@
 import { BpmnVisualization, ShapeUtil, FlowKind } from "bpmn-visualization";
 
-// BPMN diagram content conveniently retrieved with parcel (as string)
+// BPMN diagram content conveniently retrieved with Vite (as string)
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from "./diagram.bpmn?raw";
 import "./styles.css";
@@ -15,26 +15,26 @@ const footer = document.querySelector("footer");
 const version = bpmnVisualization.getVersion();
 footer.innerText = `bpmn-visualization@${version.lib}`;
 
-//load and filter a pool
+// load and filter a pool
 bpmnVisualization.load(diagram, {
   fit: { type: "Center" },
   modelFilter: {
     pools: [
       {
-        // id of the Participant related to the Pool to display
+        // name of the Participant related to the Pool to display
         name: "Process Engine - Invoice Receipt"
       }
     ]
   }
 });
 
-//add CSS classes to show running instances
+// add CSS classes to show running instances
 let activitiesMonitoringData = getActivitiesMonitoringData();
 let edgesWaitingInstances = getEdgesWaitingInstances();
 
 // Add Overlay on activities
 activitiesMonitoringData.forEach((value, key) => {
-  //running on time
+  // running on time
   if (value[0] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
@@ -46,7 +46,7 @@ activitiesMonitoringData.forEach((value, key) => {
       }
     });
   }
-  //running late with risky level
+  // running late with risky level
   if (value[1] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
@@ -58,7 +58,7 @@ activitiesMonitoringData.forEach((value, key) => {
       }
     });
   }
-  //running late with critical level
+  // running late with critical level
   if (value[2] !== 0) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
@@ -102,7 +102,7 @@ edgesWaitingInstances.forEach((value, key) => {
 });
 
 /**
- * @param {Map<String, list>} activitiesMonitoringData
+ * @returns {Map<string, Array<number>>} key: BPMN element id / value: monitoring data
  */
 function getActivitiesMonitoringData() {
   let activitiesMonitoringData = new Map();
@@ -115,7 +115,7 @@ function getActivitiesMonitoringData() {
 }
 
 /**
- * @param {Map<String, Integer>} edgesWaitingInstances
+ * @returns {Map<string, number>} key: BPMN element id / value: number of instances
  */
 function getEdgesWaitingInstances() {
   let edgesWaitingInstances = new Map();
