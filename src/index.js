@@ -35,7 +35,7 @@ let edgesWaitingInstances = getEdgesWaitingInstances();
 // Add Overlay on activities
 activitiesMonitoringData.forEach((value, key) => {
   // running on time
-  if (value.onTime) {
+  if (value.onTime != false) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
       label: value.onTime,
@@ -47,7 +47,7 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   // running late with risky level
-  if (value.risky) {
+  if (value.risky != false) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
       label: value.risky,
@@ -59,7 +59,7 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   // running late with critical level
-  if (value.critical) {
+  if (value.critical != false) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
       label: value.critical,
@@ -73,28 +73,30 @@ activitiesMonitoringData.forEach((value, key) => {
 });
 
 activitiesMonitoringData.forEach((value, key) => {
-  if (value.critical){
+  if (value.critical != false){
+    console.log(value.critical);
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
-      }
-  else if (value.risky){
+  }
+  else if (value.risky != false){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-risky");
-    }
-  else if (value.onTime)
+  }
+  else if (value.onTime != false){
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-on-time");
+  }
 });
 
 edgesWaitingInstances.forEach((value, key) => {
-  if (value.critical){
+  if (value.critical != false){
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-critical");
-  } else if (value.risky){
+  } else if (value.risky != false){
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-risky");
-  } else if (value.onTime){
+  } else if (value.onTime != false){
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-on-time");
   }
 });
 
 edgesWaitingInstances.forEach((value, key) => {
-  if (value.critical) {
+  if (value.critical != false) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
@@ -106,7 +108,7 @@ edgesWaitingInstances.forEach((value, key) => {
         }
       }
     ]);
-  } else if(value.risky){
+  } else if(value.risky != false){
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
@@ -119,7 +121,7 @@ edgesWaitingInstances.forEach((value, key) => {
       }
     ]);
   }
-  else if(value.onTime){
+  else if(value.onTime != false){
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
@@ -135,7 +137,7 @@ edgesWaitingInstances.forEach((value, key) => {
 });
 
 /**
- * @returns {Map<string, Array<number>>} key: BPMN element id / value: monitoring data
+ * @returns {Map<string, Object>} key: BPMN element id / value: monitoring data
  */
 function getActivitiesMonitoringData() {
   let activitiesMonitoringData = new Map();
@@ -148,7 +150,7 @@ function getActivitiesMonitoringData() {
 }
 
 /**
- * @returns {Map<string, number>} key: BPMN element id / value: number of instances
+ * @returns {Map<string, Object>} key: BPMN element id / value: waiting instances
  */
 function getEdgesWaitingInstances() {
   let edgesWaitingInstances = new Map();
