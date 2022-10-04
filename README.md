@@ -1,57 +1,53 @@
 # bpmn-visualization 'getting started' tutorial
 
-A getting started demo that uses bpmn-visualization library to visualize runtime monitoring data.
+A getting started demo that uses the [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) library to visualize runtime monitoring data ⏲️.
+
 
 ## Content
+The following information is visualized:
+- Running instances and their number ⚙️
+- State of instances: whether or not they predefined KPIs ⏱️ are violated:
+    - Two KPIs are considered: completion and waiting time of activities.
+    - Two levels of violation are defined: risky 🟠 and criticial 🔴.
 
-The following visualization is used:
+## Visualization
 
-**Overlays on activities:**
+### Running instances and their number ⚙️
+- **animated activity stroke**: to indicate that there are running instances of the corresponding activity
 
-- green: number of instances running on time according to a predefined completion time KPI
-- orange: number of instances running late (with a risky level) according to a predefined completion time KPI
-- red: number of instances running late (with critical level) according to a predefined completion time KPI
 
-**Color of activities:**
+- **Overlays on activities**: to indicate the number of instances
 
-- green: avg execution time of instances is “efficient” according to a predefined KPI (throuhput time)
-- orange: avg execution time is “ineffcient with a risky level” according to a predefined KPI (throuhput time)
-- red: avg execution time is “ineffcient with a criticial level” according to a predefined KPI (throuhput time)
+### State and KPI violation ⏱️
+**Colors meaning**:
+- 🟢 Green: no violation
+- 🟠 Orange: violation with a risky level
+- 🔴 Red: Violation with a critical level
 
-**Activities with animated shadow:**
-means that there are currently running instances.
-The shadow color is as following:
+#### Activities:
+- **Overlay filling color**: 
+    - 🟢 Green: number of instances running on time according to a predefined completion time KPI
+    - 🟠 Orange: number of instances running late (with a risky level) according to a predefined completion time KPI
+    - 🔴 Red: number of instances running late (with critical level) according to a predefined completion time KPI
 
-- red if at least one instance is running critically late
-- else orange if at least one instance is running risky late
-- else green (meaning that it’s still on time)
+- **Speed of the animated stroke:**  The following is applied in order:
+    - slow: if there exist instances running late with a critical level.
+    - medium: if there exist instances running late with a risky level
+    - fast: in case all instances are running on time
 
-**Activities stroke width:**
-shows the frequency of visit according to a predefined frequency indicator of incoming instances per month
+- **Shadow:** The following is applied in order:
+    - 🔴 Red: if there exist instances running late with a critical level.
+    - 🟠 Orange: if there exist instances running late with a risky level
+    - 🟢 Green: in case all instances are running on time
 
-**end events**:
+#### Edges:
+- **Animation**: indicates that there are instances waiting for the next activity to be executed
 
-- green colored overlays: contain the number of instances completed efficiently according to a completion time KPI
-- red colord overlays: contain the number of instances completed late according to a predefined completion KPI
+- **Overlay**: indicates the number of instances waiting for the next activity to be executed
 
-**Overlays on edges**:
-
-- contain the number of instances waiting on that edge
-- color = red if at least one instance is running critically late
-- else color = orange if at least one instance is running risky late
-- else color = green
-
-**Dahed running edges**
-means that there are currently running instances.
-
-**Color of edge**
-
-- green: avg waiting time of instances is “efficient” according to a predefined waiting time KPI
-- orange: avg waiting time is “ineffcient with a risky level” according to a predefined waiting time KPI
-- red: avg waiting time is “ineffcient with a criticial level” according to a predefined waiting time KPI
-
-**Edges width**
-shows the frequency of visit according to a predefined frequency indicator of incoming instances per month
+- **Overlay filling color**: The following is applied in order:
+    - 🔴 Red: if there exist instances waiting late with a critical level
+    - 🟠 Orange: if there exist instances waiting late with a risky level
 
 ## How to Run
 
