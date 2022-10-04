@@ -26,9 +26,9 @@ The following information is visualized:
 
 #### Activities:
 - **Overlay filling color**: 
-    - Green: number of instances running on time according to a predefined completion time KPI
-    - Orange: number of instances running late (with a risky level) according to a predefined completion time KPI
-    - Red: number of instances running late (with critical level) according to a predefined completion time KPI
+    - 🟢 Green: number of instances running on time according to a predefined completion time KPI
+    - 🟠 Orange: number of instances running late (with a risky level) according to a predefined completion time KPI
+    - 🔴 Red: number of instances running late (with critical level) according to a predefined completion time KPI
 
 - **Speed of the animated stroke:**  The following is applied in order:
     - slow: if there exist instances running late with a critical level.
@@ -36,9 +36,9 @@ The following information is visualized:
     - fast: in case all instances are running on time
 
 - **Shadow:** The following is applied in order:
-    - Red: if there exist instances running late with a critical level.
-    - Orange: if there exist instances running late with a risky level
-    - Green: in case all instances are running on time
+    - 🔴 Red: if there exist instances running late with a critical level.
+    - 🟠 Orange: if there exist instances running late with a risky level
+    - 🟢 Green: in case all instances are running on time
 
 #### Edges:
 - **Animation**: indicates that there are instances waiting for the next activity to be executed
@@ -46,8 +46,8 @@ The following information is visualized:
 - **Overlay**: indicates the number of instances waiting for the next activity to be executed
 
 - **Overlay filling color**: The following is applied in order:
-    - Red: if there exist instances waiting late with a critical level
-    - Orange: if there exist instances waiting late with a risky level
+    - 🔴 Red: if there exist instances waiting late with a critical level
+    - 🟠 Orange: if there exist instances waiting late with a risky level
 
 ## How to Run
 
