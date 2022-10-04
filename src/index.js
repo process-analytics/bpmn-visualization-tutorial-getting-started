@@ -1,4 +1,4 @@
-import { BpmnVisualization, ShapeUtil, FlowKind } from "bpmn-visualization";
+import { BpmnVisualization, FitType } from "bpmn-visualization";
 
 // BPMN diagram content conveniently retrieved with Vite (as string)
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
@@ -17,7 +17,7 @@ footer.innerText = `bpmn-visualization@${version.lib}`;
 
 // load and filter a pool
 bpmnVisualization.load(diagram, {
-  fit: { type: "Center" },
+  fit: { type: FitType.Center },
   modelFilter: {
     pools: [
       {
@@ -35,7 +35,7 @@ let edgesWaitingInstances = getEdgesWaitingInstances();
 // Add Overlay on activities
 activitiesMonitoringData.forEach((value, key) => {
   // running on time
-  if (value[0] !== 0) {
+  if (value[0]) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
       label: value[0].toString(),
@@ -47,7 +47,7 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   // running late with risky level
-  if (value[1] !== 0) {
+  if (value[1]) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
       label: value[1].toString(),
@@ -59,7 +59,7 @@ activitiesMonitoringData.forEach((value, key) => {
     });
   }
   // running late with critical level
-  if (value[2] !== 0) {
+  if (value[2]) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
       label: value[2].toString(),
@@ -73,13 +73,13 @@ activitiesMonitoringData.forEach((value, key) => {
 });
 
 activitiesMonitoringData.forEach((value, key) => {
-  if (value[2] !== 0){
+  if (value[2]){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
       }
-  else if (value[1] !== 0){
+  else if (value[1]){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-risky");
     }
-  else if (value[0] !== 0)
+  else if (value[0])
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-on-time");
 });
 
