@@ -1,4 +1,8 @@
+# bpmn-visualization 'getting started' tutorial
+
 A getting started demo that uses bpmn-visualization library to visualize runtime monitoring data.
+
+## Content
 
 The following visualization is used:
 
@@ -48,3 +52,13 @@ means that there are currently running instances.
 
 **Edges width**
 shows the frequency of visit according to a predefined frequency indicator of incoming instances per month
+
+## How to Run
+
+Run
+```bash
+npm install
+npm start
+```
+
+Open the URL mentioned in the console
