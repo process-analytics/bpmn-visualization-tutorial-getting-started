@@ -38,7 +38,7 @@ activitiesMonitoringData.forEach((value, key) => {
   if (value.onTime) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
-      label: value.onTime.toString(),
+      label: value.onTime,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "green", opacity: 50 },
@@ -50,7 +50,7 @@ activitiesMonitoringData.forEach((value, key) => {
   if (value.risky) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
-      label: value.risky.toString(),
+      label: value.risky,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "#FF8C00", opacity: 50 },
@@ -62,7 +62,7 @@ activitiesMonitoringData.forEach((value, key) => {
   if (value.critical) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
-      label: value.critical.toString(),
+      label: value.critical,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "red", opacity: 50 },
@@ -98,7 +98,7 @@ edgesWaitingInstances.forEach((value, key) => {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
-        label: value.critical.toString(),
+        label: value.critical,
         style: {
           font: { color: "black", size: 16 },
           fill: { color: "red", opacity: 50 },
@@ -110,7 +110,7 @@ edgesWaitingInstances.forEach((value, key) => {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
-        label: value.risky.toString(),
+        label: value.risky,
         style: {
           font: { color: "white", size: 16 },
           fill: { color: "green", opacity: 50 },
@@ -123,7 +123,7 @@ edgesWaitingInstances.forEach((value, key) => {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
-        label: value.onTime.toString(),
+        label: value.onTime,
         style: {
           font: { color: "black", size: 16 },
           fill: { color: "#FF8C00", opacity: 50 },
@@ -139,11 +139,11 @@ edgesWaitingInstances.forEach((value, key) => {
  */
 function getActivitiesMonitoringData() {
   let activitiesMonitoringData = new Map();
-  activitiesMonitoringData.set("assignApprover", {"onTime":5, "risky": 0, "critical": 0});
-  activitiesMonitoringData.set("approveInvoice", {"onTime":2, "risky": 3, "critical": 0});
-  activitiesMonitoringData.set("reviewInvoice", {"onTime":4, "risky": 1, "critical": 2});
-  activitiesMonitoringData.set("prepareBankTransfer", {"onTime":0, "risky": 0, "critical": 0});
-  activitiesMonitoringData.set("archiveInvoice", {"onTime":0, "risky": 0, "critical": 0});
+  activitiesMonitoringData.set("assignApprover", {"onTime":"5", "risky": "0", "critical": "0"});
+  activitiesMonitoringData.set("approveInvoice", {"onTime":"2", "risky": "3", "critical": "0"});
+  activitiesMonitoringData.set("reviewInvoice", {"onTime":"4", "risky": "1", "critical": "2"});
+  activitiesMonitoringData.set("prepareBankTransfer", {"onTime":"0", "risky": "0", "critical": "0"});
+  activitiesMonitoringData.set("archiveInvoice", {"onTime":"0", "risky": "0", "critical": "0"});
   return activitiesMonitoringData;
 }
 
@@ -152,6 +152,6 @@ function getActivitiesMonitoringData() {
  */
 function getEdgesWaitingInstances() {
   let edgesWaitingInstances = new Map();
-  edgesWaitingInstances.set("invoiceApproved", {"onTime":0, "risky": 0, "critical": 2});
+  edgesWaitingInstances.set("invoiceApproved", {"onTime":"0", "risky": "0", "critical": "2"});
   return edgesWaitingInstances;
 }
