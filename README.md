@@ -13,7 +13,8 @@ The following information is visualized:
 ## Visualization
 
 ### Running instances and their number ⚙️
-- **animated activity stroke**: to indicate that there are running instances of the corresponding activitiy
+- **animated activity stroke**: to indicate that there are running instances of the corresponding activity
+
 
 - **Overlays on activities**: to indicate the number of instances
 
