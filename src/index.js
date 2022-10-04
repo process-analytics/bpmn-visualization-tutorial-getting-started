@@ -74,7 +74,6 @@ activitiesMonitoringData.forEach((value, key) => {
 
 activitiesMonitoringData.forEach((value, key) => {
   if (value.critical != false){
-    console.log(value.critical);
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
   }
   else if (value.risky != false){
