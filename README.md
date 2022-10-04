@@ -1,6 +1,7 @@
 # bpmn-visualization 'getting started' tutorial
 
-A getting started demo that uses bpmn-visualization library to visualize runtime monitoring data ⏲️.
+A getting started demo that uses the [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) library to visualize runtime monitoring data ⏲️.
+
 
 ## Content
 The following information is visualized:
