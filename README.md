@@ -2,6 +2,7 @@
 
 A getting started demo that uses the [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) library to visualize runtime monitoring data ⏲️.
 
+The code of this tutorial is released under the [Apache 2.0](LICENSE) license.
 
 ## Content
 The following information is visualized:
