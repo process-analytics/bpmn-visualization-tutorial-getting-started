@@ -7,9 +7,9 @@ The code of this tutorial is released under the [Apache 2.0](LICENSE) license.
 ## Content
 The following information is visualized:
 - Running instances and their number ⚙️
-- State of instances: whether or not they predefined KPIs ⏱️ are violated:
+- State of instances: whether they predefined KPIs ⏱️ are violated:
     - Two KPIs are considered: completion and waiting time of activities.
-    - Two levels of violation are defined: risky 🟠 and criticial 🔴.
+    - Two levels of violation are defined: risky 🟠 and critical 🔴.
 
 ## Visualization
 
