@@ -139,20 +139,20 @@ edgesWaitingInstances.forEach((value, key) => {
  * @returns {Map<string, Object>} key: BPMN element id / value: monitoring data
  */
 function getActivitiesMonitoringData() {
-  let activitiesMonitoringData = new Map();
-  activitiesMonitoringData.set("assignApprover", {"onTime":"5", "risky": "0", "critical": "0"});
-  activitiesMonitoringData.set("approveInvoice", {"onTime":"2", "risky": "3", "critical": "0"});
-  activitiesMonitoringData.set("reviewInvoice", {"onTime":"4", "risky": "1", "critical": "2"});
-  activitiesMonitoringData.set("prepareBankTransfer", {"onTime":"0", "risky": "0", "critical": "0"});
-  activitiesMonitoringData.set("archiveInvoice", {"onTime":"0", "risky": "0", "critical": "0"});
-  return activitiesMonitoringData;
+  return new Map([
+    ["assignApprover", {"onTime": "5", "risky": "0", "critical": "0"}],
+    ["approveInvoice", {"onTime": "2", "risky": "3", "critical": "0"}],
+    ["reviewInvoice", {"onTime": "4", "risky": "1", "critical": "2"}],
+    ["prepareBankTransfer", {"onTime": "0", "risky": "0", "critical": "0"}],
+    ["archiveInvoice", {"onTime": "0", "risky": "0", "critical": "0"}],
+  ]);
 }
 
 /**
  * @returns {Map<string, Object>} key: BPMN element id / value: waiting instances
  */
 function getEdgesWaitingInstances() {
-  let edgesWaitingInstances = new Map();
-  edgesWaitingInstances.set("invoiceApproved", {"onTime":"0", "risky": "0", "critical": "2"});
-  return edgesWaitingInstances;
+  return new Map([
+    ["invoiceApproved", {"onTime": "0", "risky": "0", "critical": "2"}],
+  ]);
 }
