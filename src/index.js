@@ -29,11 +29,11 @@ bpmnVisualization.load(diagram, {
 });
 
 // add CSS classes to show running instances
-let activitiesMonitoringData = getActivitiesMonitoringData();
+let activitiesRunningInstances = getActivitiesRunningInstances();
 let edgesWaitingInstances = getEdgesWaitingInstances();
 
 // Add Overlay on activities
-activitiesMonitoringData.forEach((value, key) => {
+activitiesRunningInstances.forEach((value, key) => {
   // running on time
   if (value.onTime != false) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
@@ -72,7 +72,7 @@ activitiesMonitoringData.forEach((value, key) => {
   }
 });
 
-activitiesMonitoringData.forEach((value, key) => {
+activitiesRunningInstances.forEach((value, key) => {
   if (value.critical != false){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
   }
@@ -136,9 +136,9 @@ edgesWaitingInstances.forEach((value, key) => {
 });
 
 /**
- * @returns {Map<string, Object>} key: BPMN element id / value: monitoring data
+ * @returns {Map<string, Object>} key: BPMN element id / value: running instances
  */
-function getActivitiesMonitoringData() {
+function getActivitiesRunningInstances() {
   return new Map([
     ["assignApprover", {"onTime": "5", "risky": "0", "critical": "0"}],
     ["approveInvoice", {"onTime": "2", "risky": "3", "critical": "0"}],
