@@ -52,6 +52,8 @@ The following information is visualized:
 
 ## How to Run
 
+**NOTE**: this tutorial was tested with Node 16 and npm 8.16.0
+
 Run
 ```bash
 npm install
