@@ -88,55 +88,20 @@ activitiesRunningInstances.forEach((value, key) => {
 
 // add Overlays on waiting edge instances
 edgesWaitingInstances.forEach((value, key) => {
-  if (value.critical != false) {
-    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
-      {
-        position: "middle",
-        label: value.critical,
-        style: {
-          font: { color: "black", size: 16 },
-          fill: { color: "red", opacity: 50 },
-          stroke: { color: "red", width: 2 }
-        }
-      }
-    ]);
-  } else if(value.risky != false){
-    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
-      {
-        position: "middle",
-        label: value.risky,
-        style: {
-          font: { color: "white", size: 16 },
-          fill: { color: "green", opacity: 50 },
-          stroke: { color: "green", width: 2 }
-        }
-      }
-    ]);
-  }
-  else if(value.onTime != false){
-    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
-      {
-        position: "middle",
-        label: value.onTime,
-        style: {
-          font: { color: "black", size: 16 },
-          fill: { color: "#FF8C00", opacity: 50 },
-          stroke: { color: "#FF8C00", width: 2 }
-        }
-      }
-    ]);
-  }
+  bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
+    position: "middle",
+    label: value,
+    style: {
+      font: { color: "black", size: 16 },
+      fill: { color: "red", opacity: 50 },
+      stroke: { color: "red", width: 2 }
+    }
+  });
 });
 
 // add CSS classes to waiting edge instances
 edgesWaitingInstances.forEach((value, key) => {
-  if (value.critical != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-critical");
-  } else if (value.risky != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-risky");
-  } else if (value.onTime != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-on-time");
-  }
+  bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting");
 });
 
 /**
@@ -153,10 +118,10 @@ function getActivitiesRunningInstances() {
 }
 
 /**
- * @returns {Map<string, Object>} key: BPMN element id / value: waiting instances
+ * @returns {Map<string, number>} key: BPMN element id / value: number waiting instances
  */
 function getEdgesWaitingInstances() {
   return new Map([
-    ["invoiceApproved", {"onTime": "0", "risky": "0", "critical": "2"}],
+    ["invoiceApproved", "2"],
   ]);
 }
