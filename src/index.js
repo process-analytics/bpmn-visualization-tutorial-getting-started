@@ -28,11 +28,11 @@ bpmnVisualization.load(diagram, {
   }
 });
 
-// add CSS classes to show running instances
+// retrieve data of the live instances
 const activitiesRunningInstances = getActivitiesRunningInstances();
 const edgesWaitingInstances = getEdgesWaitingInstances();
 
-// Add Overlay on activities
+// add Overlays on running activity instances
 activitiesRunningInstances.forEach((value, key) => {
   // running on time
   if (value.onTime != false) {
@@ -72,6 +72,7 @@ activitiesRunningInstances.forEach((value, key) => {
   }
 });
 
+// add CSS classes to running activity instances
 activitiesRunningInstances.forEach((value, key) => {
   if (value.critical != false){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
@@ -84,16 +85,7 @@ activitiesRunningInstances.forEach((value, key) => {
   }
 });
 
-edgesWaitingInstances.forEach((value, key) => {
-  if (value.critical != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-critical");
-  } else if (value.risky != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-risky");
-  } else if (value.onTime != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-on-time");
-  }
-});
-
+// add Overlays on waiting edge instances
 edgesWaitingInstances.forEach((value, key) => {
   if (value.critical != false) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
@@ -132,6 +124,17 @@ edgesWaitingInstances.forEach((value, key) => {
         }
       }
     ]);
+  }
+});
+
+// add CSS classes to waiting edge instances
+edgesWaitingInstances.forEach((value, key) => {
+  if (value.critical != false){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-critical");
+  } else if (value.risky != false){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-risky");
+  } else if (value.onTime != false){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-on-time");
   }
 });
 
