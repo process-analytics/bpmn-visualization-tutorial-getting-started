@@ -85,18 +85,6 @@ activitiesRunningInstances.forEach((value, key) => {
   }
 });
 
-
-// add CSS classes to waiting edge instances
-edgesWaitingInstances.forEach((value, key) => {
-  if (value.critical != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-critical");
-  } else if (value.risky != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-risky");
-  } else if (value.onTime != false){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-on-time");
-  }
-});
-
 // add Overlays on waiting edge instances
 edgesWaitingInstances.forEach((value, key) => {
   if (value.critical != false) {
@@ -136,6 +124,17 @@ edgesWaitingInstances.forEach((value, key) => {
         }
       }
     ]);
+  }
+});
+
+// add CSS classes to waiting edge instances
+edgesWaitingInstances.forEach((value, key) => {
+  if (value.critical != false){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-critical");
+  } else if (value.risky != false){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-risky");
+  } else if (value.onTime != false){
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting-on-time");
   }
 });
 
