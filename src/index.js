@@ -1,6 +1,7 @@
 import { BpmnVisualization, FitType } from "bpmn-visualization";
 
-// BPMN diagram content conveniently retrieved with Vite (as string)
+// the '?raw' parameter tells Vite to store the diagram content in a string.
+// for more details, see https://vitejs.dev/guide/assets.html#importing-asset-as-string
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from "./diagram.bpmn?raw";
 import "./styles.css";
