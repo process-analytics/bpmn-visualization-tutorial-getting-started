@@ -28,48 +28,42 @@ footer {
 }
 
 
-/*css of running instances */
+/* Running instances */
 .task-running-on-time > rect {
     stroke-dasharray: 10, 5;
     animation-name: dash-task;
-    animation-duration: 3s;
+    animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-direction: reverse;
     filter: drop-shadow(0 0 0.95em rgb(6, 146, 3));
 }
 
 .task-running-risky > rect {
     stroke-dasharray: 10, 5;
     animation-name: dash-task;
-    animation-duration: 8s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-direction: reverse;
     filter: drop-shadow(0 0 0.95em rgb(255, 119, 0));
 }
 
 .task-running-critical > rect {
     stroke-dasharray: 10, 5;
     animation-name: dash-task;
-    animation-duration: 15s;
+    animation-duration: 1.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-direction: reverse;
     filter: drop-shadow(0 0 0.95em rgb(255, 0, 0));
 }
 
 @keyframes dash-task {
-    from {
-        stroke-dashoffset: 0;
-    }
     to {
-        stroke-dashoffset: 100;
+        stroke-dashoffset: -15;
     }
 }
 
-/* CSS of waiting process instances */
 
+/* Waiting instances */
 .path-waiting-critical > path:nth-child(2) {
     stroke: #ca0d0d;
     animation: pulsate 1.5s ease-out;
