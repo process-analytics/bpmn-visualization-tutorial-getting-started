@@ -69,42 +69,15 @@ footer {
 }
 
 /* CSS of waiting process instances */
-
-.path-waiting-critical > path:nth-child(2) {
+.path-waiting > path:nth-child(2) {
     stroke: #ca0d0d;
     animation: pulsate 1.5s ease-out;
     animation-iteration-count: infinite;
 }
 
-.path-waiting-critical > path:nth-child(3) {
+.path-waiting > path:nth-child(3) {
     fill: #ca0d0d;
     stroke: #ca0d0d;
-    animation: pulsate 1.5s ease-out;
-    animation-iteration-count: infinite;
-}
-
-.path-waiting-risky > path:nth-child(2) {
-    stroke: rgb(255, 119, 0);
-    animation: pulsate 1.5s ease-out;
-    animation-iteration-count: infinite;
-}
-
-.path-waiting-risky > path:nth-child(3) {
-    fill: rgb(255, 119, 0);
-    stroke: rgb(255, 119, 0);
-    animation: pulsate 1.5s ease-out;
-    animation-iteration-count: infinite;
-}
-
-.path-waiting-on-time > path:nth-child(2) {
-    stroke: rgb(6, 146, 3);
-    animation: pulsate 1.5s ease-out;
-    animation-iteration-count: infinite;
-}
-
-.path-waiting-on-time > path:nth-child(3) {
-    fill: rgb(6, 146, 3);
-    stroke: rgb(6, 146, 3);
     animation: pulsate 1.5s ease-out;
     animation-iteration-count: infinite;
 }
