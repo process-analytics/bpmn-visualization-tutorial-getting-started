@@ -117,7 +117,7 @@ function getActivitiesRunningInstances() {
 }
 
 /**
- * @returns {Map<string, Number>} key: BPMN element id / value: number waiting instances
+ * @returns {Map<string, number>} key: BPMN element id / value: number waiting instances
  */
 function getEdgesWaitingInstances() {
   return new Map([
