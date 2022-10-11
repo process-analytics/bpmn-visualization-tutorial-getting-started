@@ -29,8 +29,8 @@ bpmnVisualization.load(diagram, {
 });
 
 // add CSS classes to show running instances
-let activitiesRunningInstances = getActivitiesRunningInstances();
-let edgesWaitingInstances = getEdgesWaitingInstances();
+const activitiesRunningInstances = getActivitiesRunningInstances();
+const edgesWaitingInstances = getEdgesWaitingInstances();
 
 // Add Overlay on activities
 activitiesRunningInstances.forEach((value, key) => {
