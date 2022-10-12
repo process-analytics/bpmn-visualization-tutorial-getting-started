@@ -39,7 +39,7 @@ activitiesRunningInstances.forEach((value, key) => {
   if (value.onTime) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
-      label: String(value.onTime),
+      label: `${value.onTime}`,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "green", opacity: 50 },
@@ -51,7 +51,7 @@ activitiesRunningInstances.forEach((value, key) => {
   if (value.risky) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
-      label: String(value.risky),
+      label: `${value.risky}`,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "#FF8C00", opacity: 50 },
@@ -63,7 +63,7 @@ activitiesRunningInstances.forEach((value, key) => {
   if (value.critical) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
-      label: String(value.critical),
+      label: `${value.critical}`,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "red", opacity: 50 },
@@ -92,7 +92,7 @@ edgesWaitingInstances.forEach((value, key) => {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
-        label: String(value.critical),
+        label: `${value.critical}`,
         style: {
           font: { color: "black", size: 16 },
           fill: { color: "red", opacity: 50 },
@@ -104,7 +104,7 @@ edgesWaitingInstances.forEach((value, key) => {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
-        label: String(value.risky),
+        label: `${value.risky}`,
         style: {
           font: { color: "white", size: 16 },
           fill: { color: "green", opacity: 50 },
@@ -117,7 +117,7 @@ edgesWaitingInstances.forEach((value, key) => {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
       {
         position: "middle",
-        label: String(value.onTime),
+        label: `${value.onTime}`,
         style: {
           font: { color: "black", size: 16 },
           fill: { color: "#FF8C00", opacity: 50 },
