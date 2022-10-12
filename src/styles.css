@@ -1,93 +1,91 @@
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 footer {
-    float: right;
-    margin-right: 2rem;
-    margin-top: 1.5rem;
-    font-style: italic;
+  float: right;
+  margin-right: 2rem;
+  margin-top: 1.5rem;
+  font-style: italic;
 }
 
 #bpmn-container {
-    /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
-    /* width is relative to the window size */
-    height: 80vh;
-    border-style: solid;
-    border-color: #b0b0b0;
-    border-width: 1px;
-    /* This ensures that the parts of the diagram outside of the container are not displayed. */
-    overflow: hidden;
-    background-color: white;
+  /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
+  /* width is relative to the window size */
+  height: 80vh;
+  border-style: solid;
+  border-color: #b0b0b0;
+  border-width: 1px;
+  /* This ensures that the parts of the diagram outside of the container are not displayed. */
+  overflow: hidden;
+  background-color: white;
 }
 
 .bpmn-type-event > ellipse,
 .bpmn-type-activity > rect,
 .bpmn-type-gateway > path:nth-child(1) {
-    fill: rgb(230, 225, 225);
+  fill: rgb(230, 225, 225);
 }
-
 
 /* Running instances */
 .task-running-on-time > rect {
-    stroke-dasharray: 10, 5;
-    animation-name: dash-task;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    filter: drop-shadow(0 0 0.95em rgb(6, 146, 3));
+  stroke-dasharray: 10, 5;
+  animation-name: dash-task;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 0.95em rgb(6, 146, 3));
 }
 
 .task-running-risky > rect {
-    stroke-dasharray: 10, 5;
-    animation-name: dash-task;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    filter: drop-shadow(0 0 0.95em rgb(255, 119, 0));
+  stroke-dasharray: 10, 5;
+  animation-name: dash-task;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 0.95em rgb(255, 119, 0));
 }
 
 .task-running-critical > rect {
-    stroke-dasharray: 10, 5;
-    animation-name: dash-task;
-    animation-duration: 1.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    filter: drop-shadow(0 0 0.95em rgb(255, 0, 0));
+  stroke-dasharray: 10, 5;
+  animation-name: dash-task;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 0.95em rgb(255, 0, 0));
 }
 
 @keyframes dash-task {
-    to {
-        stroke-dashoffset: -15;
-    }
+  to {
+    stroke-dashoffset: -15;
+  }
 }
-
 
 /* Waiting instances */
 .path-waiting > path:nth-child(2) {
-    stroke: #ca0d0d;
-    animation: pulsate 1.5s ease-out;
-    animation-iteration-count: infinite;
+  stroke: #ca0d0d;
+  animation: pulsate 1.5s ease-out;
+  animation-iteration-count: infinite;
 }
 
 .path-waiting > path:nth-child(3) {
-    fill: #ca0d0d;
-    stroke: #ca0d0d;
-    animation: pulsate 1.5s ease-out;
-    animation-iteration-count: infinite;
+  fill: #ca0d0d;
+  stroke: #ca0d0d;
+  animation: pulsate 1.5s ease-out;
+  animation-iteration-count: infinite;
 }
 
 @keyframes pulsate {
-    0% {
-        opacity: 0.4;
-        stroke-width: 3;
-    }
-    50% {
-        opacity: 1.0;
-        stroke-width: 6;
-    }
-    100% {
-        opacity: 0.4;
-        stroke-width: 3;
-    }
+  0% {
+    opacity: 0.4;
+    stroke-width: 3;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 6;
+  }
+  100% {
+    opacity: 0.4;
+    stroke-width: 3;
+  }
 }
