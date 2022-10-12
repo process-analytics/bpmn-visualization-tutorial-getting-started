@@ -1,11 +1,27 @@
 # bpmn-visualization 'getting started' tutorial
 
-A getting started demo that uses the [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) library to visualize runtime monitoring data ⏲️.
+This is a template bootstrap. You can clone it and use it to follow the [getting started tutorial](https://medium.com/@process-analytics/getting-started-with-bpmn-visualization-a54fbafae2df).
 
-The code of this tutorial is released under the [Apache 2.0](LICENSE) license.
+The tutorial uses the [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) library to visualize runtime monitoring data ⏲️.
 
-## Content
-The following information is visualized:
+The solution is available in the [solution](https://github.com/process-analytics/bpmn-visualization-tutorial-getting-started/tree/solution) branch.
+
+## How to Run
+
+**NOTE**: this tutorial was tested with Node 16 and npm 8.16.0
+
+Run
+```bash
+npm install
+npm start
+```
+
+Open the URL mentioned in the console
+
+Save your code systematically to see the changes in your browser.
+
+## Tutorial Content
+The tutorial explains how to visualize the following information using *bpmn-visualization*:
 - Running instances and their number ⚙️
 - State of instances: whether they predefined KPIs ⏱️ are violated:
     - Two KPIs are considered: completion and waiting time of activities.
@@ -50,14 +66,4 @@ The following information is visualized:
     - 🔴 Red: if there exist instances waiting late with a critical level
     - 🟠 Orange: if there exist instances waiting late with a risky level
 
-## How to Run
 
-**NOTE**: this tutorial was tested with Node 16 and npm 8.16.0
-
-Run
-```bash
-npm install
-npm start
-```
-
-Open the URL mentioned in the console
