@@ -12,10 +12,6 @@ const bpmnVisualization = new BpmnVisualization({
   navigation: { enabled: true },
 });
 
-const footer = document.querySelector('footer');
-const version = bpmnVisualization.getVersion();
-footer.innerText = `bpmn-visualization@${version.lib}`;
-
 // load and filter a pool
 bpmnVisualization.load(diagram, {
   fit: { type: FitType.Center },
