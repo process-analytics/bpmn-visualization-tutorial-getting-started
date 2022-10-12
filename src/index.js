@@ -36,10 +36,10 @@ const edgesWaitingInstances = getEdgesWaitingInstances();
 // add Overlays on running activity instances
 activitiesRunningInstances.forEach((value, key) => {
   // running on time
-  if (value.onTime != false) {
+  if (value.onTime) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-center",
-      label: value.onTime,
+      label: `${value.onTime}`,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "green", opacity: 50 },
@@ -48,10 +48,10 @@ activitiesRunningInstances.forEach((value, key) => {
     });
   }
   // running late with risky level
-  if (value.risky != false) {
+  if (value.risky) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-left",
-      label: value.risky,
+      label: `${value.risky}`,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "#FF8C00", opacity: 50 },
@@ -60,10 +60,10 @@ activitiesRunningInstances.forEach((value, key) => {
     });
   }
   // running late with critical level
-  if (value.critical != false) {
+  if (value.critical) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
       position: "top-right",
-      label: value.critical,
+      label: `${value.critical}`,
       style: {
         font: { color: "white", size: 16 },
         fill: { color: "red", opacity: 50 },
@@ -75,13 +75,13 @@ activitiesRunningInstances.forEach((value, key) => {
 
 // add CSS classes to running activity instances
 activitiesRunningInstances.forEach((value, key) => {
-  if (value.critical != false){
+  if (value.critical){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
   }
-  else if (value.risky != false){
+  else if (value.risky){
       bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-risky");
   }
-  else if (value.onTime != false){
+  else if (value.onTime){
     bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-on-time");
   }
 });
@@ -90,7 +90,7 @@ activitiesRunningInstances.forEach((value, key) => {
 edgesWaitingInstances.forEach((value, key) => {
   bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
     position: "middle",
-    label: value,
+    label: `${value}`,
     style: {
       font: { color: "black", size: 16 },
       fill: { color: "red", opacity: 50 },
@@ -109,11 +109,11 @@ edgesWaitingInstances.forEach((value, key) => {
  */
 function getActivitiesRunningInstances() {
   return new Map([
-    ["assignApprover", {"onTime": "5", "risky": "0", "critical": "0"}],
-    ["approveInvoice", {"onTime": "2", "risky": "3", "critical": "0"}],
-    ["reviewInvoice", {"onTime": "4", "risky": "1", "critical": "2"}],
-    ["prepareBankTransfer", {"onTime": "0", "risky": "0", "critical": "0"}],
-    ["archiveInvoice", {"onTime": "0", "risky": "0", "critical": "0"}],
+    ["assignApprover", {"onTime": 5, "risky": 0, "critical": 0}],
+    ["approveInvoice", {"onTime": 2, "risky": 3, "critical": 0}],
+    ["reviewInvoice", {"onTime": 4, "risky": 1, "critical": 2}],
+    ["prepareBankTransfer", {"onTime": 0, "risky": "0", "critical": 0}],
+    ["archiveInvoice", {"onTime": 0, "risky": 0, "critical": 0}],
   ]);
 }
 
@@ -122,6 +122,6 @@ function getActivitiesRunningInstances() {
  */
 function getEdgesWaitingInstances() {
   return new Map([
-    ["invoiceApproved", "2"],
+    ["invoiceApproved", 2],
   ]);
 }
