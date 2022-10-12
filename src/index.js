@@ -34,10 +34,10 @@ const activitiesRunningInstances = getActivitiesRunningInstances();
 const edgesWaitingInstances = getEdgesWaitingInstances();
 
 // add Overlays on running activity instances
-activitiesRunningInstances.forEach((value, key) => {
+activitiesRunningInstances.forEach((value, activityId) => {
   // running on time
   if (value.onTime) {
-    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
+    bpmnVisualization.bpmnElementsRegistry.addOverlays(activityId, {
       position: "top-center",
       label: `${value.onTime}`,
       style: {
@@ -49,7 +49,7 @@ activitiesRunningInstances.forEach((value, key) => {
   }
   // running late with risky level
   if (value.risky) {
-    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
+    bpmnVisualization.bpmnElementsRegistry.addOverlays(activityId, {
       position: "top-left",
       label: `${value.risky}`,
       style: {
@@ -61,7 +61,7 @@ activitiesRunningInstances.forEach((value, key) => {
   }
   // running late with critical level
   if (value.critical) {
-    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
+    bpmnVisualization.bpmnElementsRegistry.addOverlays(activityId, {
       position: "top-right",
       label: `${value.critical}`,
       style: {
@@ -74,21 +74,21 @@ activitiesRunningInstances.forEach((value, key) => {
 });
 
 // add CSS classes to running activity instances
-activitiesRunningInstances.forEach((value, key) => {
+activitiesRunningInstances.forEach((value, activityId) => {
   if (value.critical){
-      bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-critical");
+      bpmnVisualization.bpmnElementsRegistry.addCssClasses(activityId, "task-running-critical");
   }
   else if (value.risky){
-      bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-risky");
+      bpmnVisualization.bpmnElementsRegistry.addCssClasses(activityId, "task-running-risky");
   }
   else if (value.onTime){
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "task-running-on-time");
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(activityId, "task-running-on-time");
   }
 });
 
 // add Overlays on waiting edge instances
-edgesWaitingInstances.forEach((value, key) => {
-  bpmnVisualization.bpmnElementsRegistry.addOverlays(key, {
+edgesWaitingInstances.forEach((value, edgeId) => {
+  bpmnVisualization.bpmnElementsRegistry.addOverlays(edgeId, {
     position: "middle",
     label: `${value}`,
     style: {
@@ -100,8 +100,8 @@ edgesWaitingInstances.forEach((value, key) => {
 });
 
 // add CSS classes to waiting edge instances
-edgesWaitingInstances.forEach((value, key) => {
-  bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, "path-waiting");
+edgesWaitingInstances.forEach((value, edgeId) => {
+  bpmnVisualization.bpmnElementsRegistry.addCssClasses(edgeId, "path-waiting");
 });
 
 /**
@@ -112,7 +112,7 @@ function getActivitiesRunningInstances() {
     ["assignApprover", {"onTime": 5, "risky": 0, "critical": 0}],
     ["approveInvoice", {"onTime": 2, "risky": 3, "critical": 0}],
     ["reviewInvoice", {"onTime": 4, "risky": 1, "critical": 2}],
-    ["prepareBankTransfer", {"onTime": 0, "risky": "0", "critical": 0}],
+    ["prepareBankTransfer", {"onTime": 0, "risky": 0, "critical": 0}],
     ["archiveInvoice", {"onTime": 0, "risky": 0, "critical": 0}],
   ]);
 }
