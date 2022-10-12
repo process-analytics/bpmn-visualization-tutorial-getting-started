@@ -86,7 +86,7 @@ activitiesRunningInstances.forEach((value, key) => {
   }
 });
 
-// add CSS classes to waiting edge instances
+// add Overlays on waiting edge instances
 edgesWaitingInstances.forEach((value, key) => {
   if (value.critical) {
     bpmnVisualization.bpmnElementsRegistry.addOverlays(key, [
