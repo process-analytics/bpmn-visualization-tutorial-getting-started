@@ -6,6 +6,8 @@ The tutorial uses the [bpmn-visualization](https://github.com/process-analytics/
 
 The whole solution is available in the [solution](https://github.com/process-analytics/bpmn-visualization-tutorial-getting-started/tree/solution) branch.
 
+The code of this tutorial is released under the [Apache 2.0](LICENSE) license.
+
 
 ## How to Run
 
