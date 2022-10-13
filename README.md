@@ -4,7 +4,8 @@ This is a template bootstrap. You can clone it and use it to follow the [getting
 
 The tutorial uses the [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) library to visualize runtime monitoring data ⏲️.
 
-The solution is available in the [solution](https://github.com/process-analytics/bpmn-visualization-tutorial-getting-started/tree/solution) branch.
+The whole solution is available in the [solution](https://github.com/process-analytics/bpmn-visualization-tutorial-getting-started/tree/solution) branch.
+
 
 ## How to Run
 
