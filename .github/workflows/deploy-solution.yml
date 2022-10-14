@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Path of the directory containing the static assets.
-          path: ./dist
+          path: ./dist/assets
           # Duration after which artifact will expire in days.
           # retention-days:
 
