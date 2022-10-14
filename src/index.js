@@ -90,7 +90,7 @@ edgesWaitingInstances.forEach((value, edgeId) => {
     position: 'middle',
     label: `${value}`,
     style: {
-      font: { color: 'black', size: 16 },
+      font: { color: 'white', size: 16 },
       fill: { color: 'red', opacity: 50 },
       stroke: { color: 'red', width: 2 },
     },
