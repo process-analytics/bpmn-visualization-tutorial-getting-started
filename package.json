@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "scripts": {
       "start": "vite",
-      "build": "vite build",
+      "build": "vite build --host https://process-analytics.github.io/bpmn-visualization-tutorial-getting-started",
       "preview": "vite preview"
     },
     "dependencies": {
