@@ -6,7 +6,7 @@
     "scripts": {
       "start": "vite",
       "build": "vite build --base=/bpmn-visualization-tutorial-getting-started/",
-      "preview": "vite preview"
+      "preview": "vite preview --base /bpmn-visualization-tutorial-getting-started/ --open"
     },
     "dependencies": {
       "bpmn-visualization": "0.27.0"
